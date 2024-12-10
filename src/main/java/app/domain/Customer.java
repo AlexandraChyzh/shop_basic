@@ -21,6 +21,10 @@ public class Customer {
         this.name = name;
     }
 
+    public Customer(String name) {
+        this.name = name;
+    }
+
     // Метод, который добавляет один продукт в корзину покупателя.
     public void addProduct(Product product) {
         if (product.isActive()) {
