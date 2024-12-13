@@ -1,14 +1,18 @@
 package app.repository;
 
 import app.domain.Customer;
+import app.exceptions.CustomerSaveException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CustomerRepositoryImpl implements CustomerRepository{
+public class CustomerRepositoryImpl implements CustomerRepository {
 
+    // Это имитация базы данных в виде map,
+    // где ключ - это идентификатор покупателя,
+    // значение - это сам объект покупателя.
     private final Map<Long, Customer> database = new HashMap<>();
     private long currentId = 0;
 
@@ -34,8 +38,9 @@ public class CustomerRepositoryImpl implements CustomerRepository{
     public void update(Customer customer) {
         Long id = customer.getId();
         String newName = customer.getName();
+
         Customer existedCustomer = findById(id);
-        if (existedCustomer != null){
+        if (existedCustomer != null) {
             existedCustomer.setName(newName);
         }
     }
@@ -45,23 +50,30 @@ public class CustomerRepositoryImpl implements CustomerRepository{
         database.remove(id);
     }
 
-    public static void main(String[] args) {
-
-        CustomerRepository repository = new CustomerRepositoryImpl();
-
-        repository.save(new Customer("John", true));
-        repository.save(new Customer("Jack", true));
-        repository.save(new Customer("Jenna", true));
-
+    // Временный метод для ручного тестирования репозитория покупателей.
+//    public static void main(String[] args) {
+//
+//        // Создаём объект репозитория
+//        CustomerRepository repository = new CustomerRepositoryImpl();
+//
+//        // Тестируем метод save
+//        repository.save(new Customer("John", true));
+//        repository.save(new Customer("Jack", true));
+//        repository.save(new Customer("Jenna", true));
+//
+//        // Тестируем метод findAll
+////        repository.findAll().forEach(x -> System.out.println(x));
+//
+//        // Тестируем метод findById
+////        System.out.println(repository.findById(3L));
+//
+//        // Тестируем метод update
+////        System.out.println(repository.findById(1L));
+////        repository.update(new Customer(1L, "John Doe"));
+////        System.out.println(repository.findById(1L));
+//
+//        // Тестируем метод removeById
+//        repository.removeById(1L);
 //        repository.findAll().forEach(x -> System.out.println(x));
-
-//        System.out.println(repository.findById(3L));
-
-//        System.out.println(repository.findById(1L));
-//        repository.update(new Customer(1L, "John Doe"));
-//        System.out.println(repository.findById(1L));
-
-        repository.removeById(1L);
-        repository.findAll().forEach(x -> System.out.println(x));
-    }
+//    }
 }

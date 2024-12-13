@@ -19,6 +19,12 @@ public class Product {
         this.price = price;
     }
 
+    public Product(String title, double price, boolean active) {
+        this.title = title;
+        this.price = price;
+        this.active = active;
+    }
+
 
     public Long getId() {
         return id;
@@ -67,7 +73,6 @@ public class Product {
 
     @Override
     public String toString() {
-        return String.format("Продукт: id - %d, наименование - %s, цена - %.2f, " +
-                "активен - %s.", id, title, price, active ? "да" : "нет");
+        return String.format("Продукт: id - %d, наименование - %s, цена - %.2f. ", id, title, price);
     }
 }
