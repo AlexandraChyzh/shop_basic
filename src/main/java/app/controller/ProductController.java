@@ -10,44 +10,51 @@ import java.util.List;
 
 public class ProductController {
 
-    private ProductService service;
-
+    private final ProductService service;
 
     public ProductController(ProductService service) {
         this.service = service;
     }
 
-   public Product save(String title, double price) throws ProductSaveException{
+    public Product save(String title, double price) throws ProductSaveException {
         Product product = new Product(title, price);
         return service.save(product);
-   }
-   public List<Product> getAllActiveProducts(){
-        return service.getAllActiveProducts();
-   }
-   public Product getActiveProductById(Long id) throws ProductNotFoundException{
-        return service.getActiveProductById(id);
-   }
-   public void updateActiveProduct(Long id, double price) throws ProductUpdateException, ProductNotFoundException{
-       Product product = new Product(id, price);
-       service.updateActiveProduct(product);
+    }
 
-   }
-   public void deleteById(Long id) throws ProductNotFoundException{
+    public List<Product> getAllActiveProducts() {
+        return service.getAllActiveProducts();
+    }
+
+    public Product getActiveProductById(Long id) throws ProductNotFoundException {
+        return service.getActiveProductById(id);
+    }
+
+    public void updateActiveProduct(Long id, double price) throws ProductUpdateException, ProductNotFoundException {
+        Product product = new Product(id, price);
+        service.updateActiveProduct(product);
+    }
+
+    public void deleteById(Long id) throws ProductNotFoundException {
         service.deleteById(id);
-   }
-   public void deleteByTitle(String title){
+    }
+
+    public void deleteByTitle(String title) {
         service.deleteByTitle(title);
-   }
-   public void restoreById(Long id){
+    }
+
+    public void restoreById(Long id) {
         service.restoreById(id);
-   }
-   public int getActiveProductNumber(){
-        return service.getActiveProductNumber();
-   }
-   public double getActiveProductsTotalCost(){
+    }
+
+    public int getActiveProductsNumber() {
+        return service.getActiveProductsNumber();
+    }
+
+    public double getActiveProductsTotalCost() {
         return service.getActiveProductsTotalCost();
-   }
-   public double getActiveProductsAveragePrice(){
+    }
+
+    public double getActiveProductsAveragePrice() {
         return service.getActiveProductsAveragePrice();
-   }
+    }
 }

@@ -91,7 +91,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public int getActiveProductNumber() {
+    public int getActiveProductsNumber() {
         return getAllActiveProducts().size();
     }
 
@@ -105,10 +105,10 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public double getActiveProductsAveragePrice() {
-        int productNumber = getActiveProductNumber();
+        int productNumber = getActiveProductsNumber();
         if (productNumber == 0){
             return 0;
         }
-        return getActiveProductsTotalCost() / getActiveProductNumber();
+        return getActiveProductsTotalCost() / getActiveProductsNumber();
     }
 }

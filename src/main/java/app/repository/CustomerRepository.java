@@ -1,6 +1,7 @@
 package app.repository;
 
 import app.domain.Customer;
+import app.exceptions.CustomerSaveException;
 
 import java.util.List;
 

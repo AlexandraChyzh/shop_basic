@@ -16,7 +16,7 @@ public interface ProductService {
     void deleteById(Long id) throws ProductNotFoundException;
     void deleteByTitle(String title);
     void restoreById(Long id);
-    int getActiveProductNumber();
+    int getActiveProductsNumber();
     double getActiveProductsTotalCost();
     double getActiveProductsAveragePrice();
 }
